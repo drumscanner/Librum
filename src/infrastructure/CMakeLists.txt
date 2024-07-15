@@ -18,6 +18,8 @@ add_library(infrastructure
                     persistance/dictionary_access.hpp
                     persistance/ai_explanation_access.cpp
                     persistance/ai_explanation_access.hpp
+                    persistance/translation_access.cpp
+                    persistance/translation_access.hpp
                     persistance/folder_storage_access.hpp
                     persistance/folder_storage_access.cpp
                     persistance/api_error_helper.hpp

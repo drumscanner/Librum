@@ -53,6 +53,10 @@ QString getMessageForErrorCode(ErrorCode code)
         return "AI explanation limit reached";
     case ErrorCode::AiRequestTooLong:
         return "AI request too long";
+    case ErrorCode::TranslationLimitReached:
+        return "Translation limit reached";
+    case ErrorCode::TranslateRequestTooLong:
+        return "Translate request too long";
     case ErrorCode::UserHasNoRootFolder:
         return "User has no root folder";
     case ErrorCode::NameTooShort:

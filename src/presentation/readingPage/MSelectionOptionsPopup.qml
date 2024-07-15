@@ -13,6 +13,7 @@ Popup {
     signal newWidth
     signal dictionaryOptionSelected(string word)
     signal explanationOptionSelected(string word)
+    signal translationOptionSelected(string text)
 
     padding: 0
     width: layout.width
@@ -199,6 +200,37 @@ Popup {
         }
 
         Label {
+            id: translateText
+            Layout.fillWidth: true
+            Layout.leftMargin: 16
+            Layout.rightMargin: 16
+            opacity: explainTextArea.pressed ? 0.6 : 1
+            text: qsTr("Translate")
+            color: Style.colorText
+            font.pointSize: Fonts.size12dot25
+            font.weight: Font.Normal
+
+            MouseArea {
+                id: translateTextArea
+                anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
+                hoverEnabled: true
+
+                onClicked: {
+                    let text = ""
+                    if (root.highlight == "")
+                        text = activeFocusItem.getSelectedText()
+                    else
+                        text = activeFocusItem.getHighlightedText(root.highlight)
+                    console.info("Menu Translate: ", text)
+                    root.translationOptionSelected(text)
+
+                    root.close()
+                }
+            }
+        }
+
+        Label {
             id: explainText
             Layout.fillWidth: true
             Layout.leftMargin: 16
@@ -220,8 +252,7 @@ Popup {
                     if (root.highlight == "")
                         text = activeFocusItem.getSelectedText()
                     else
-                        text = activeFocusItem.getHighlightedText(
-                                    root.highlight)
+                        text = activeFocusItem.getHighlightedText(root.highlight)
                     root.explanationOptionSelected(text)
 
                     root.close()

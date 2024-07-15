@@ -239,13 +239,26 @@ Pane {
         onNewWidth: internal.openSelectionOptionsPopup(-1, -1)
 
         onExplanationOptionSelected: text => {
-                                         explanationPopup.question = text
-                                         explanationPopup.open()
-                                     }
+            explanationPopup.question = text
+            explanationPopup.open()
+        }
+
+        onTranslationOptionSelected: text => {
+            console.info("onTranslationOptionSelected: ", text)
+            translationPopup.text = text
+            translationPopup.open()
+        }
+
     }
 
     MDictionaryPopup {
         id: dictionaryPopup
+    }
+
+    MTranslationPopup {
+        id: translationPopup
+        x: root.width / 2 - translationPopup.width / 2
+        y: root.height / 2 - translationPopup.height / 2
     }
 
     MExplanationPopup {

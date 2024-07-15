@@ -40,6 +40,10 @@
 #include "settings_service.hpp"
 #include "tools_controller.hpp"
 #include "tools_service.hpp"
+#include "translation_access.hpp"
+#include "translation_gateway.hpp"
+#include "translation_controller.hpp"
+#include "translation_service.hpp"
 #include "user_controller.hpp"
 #include "user_service.hpp"
 #include "user_storage_access.hpp"
@@ -80,6 +84,13 @@ const auto diConfig = []
         di::bind<IAiExplanationService>().to<services::AiExplanationService>(),
         di::bind<IAiExplanationGateway>().to<gateways::AiExplanationGateway>(),
         di::bind<IAiExplanationAccess>().to<persistence::AiExplanationAccess>(),
+
+        // Text translation
+        di::bind<ITranslationController>()
+            .to<controllers::TranslationController>(),
+        di::bind<ITranslationService>().to<services::TranslationService>(),
+        di::bind<ITranslationGateway>().to<gateways::TranslationGateway>(),
+        di::bind<ITranslationAccess>().to<persistence::TranslationAccess>(),
 
         // Library
         di::bind<ILibraryController>().to<controllers::LibraryController>(),

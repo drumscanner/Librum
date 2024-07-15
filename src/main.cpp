@@ -113,6 +113,13 @@ int main(int argc, char* argv[])
     qmlRegisterSingletonInstance("Librum.controllers", 1, 0, "AiExplanationController",
                                  aiExplanationController.get());
 
+    auto * translationService =
+        config::diConfig().create<application::ITranslationService*>();
+    auto translationController =
+        std::make_unique<TranslationController>(translationService);
+    qmlRegisterSingletonInstance("Librum.controllers", 1, 0, "TranslationController",
+        translationController.get());
+
     // User Stack
     auto* userService = config::diConfig().create<application::IUserService*>();
     auto userController = std::make_unique<UserController>(userService);
@@ -205,9 +212,13 @@ int main(int argc, char* argv[])
                      freeBooksService, &application::IFreeBooksService::setupUserData);
     QObject::connect(authenticationService, &application::IAuthenticationService::loggedIn,
                      aiExplanationService, &application::IAiExplanationService::setupUserData);
+    QObject::connect(authenticationService, &application::IAuthenticationService::loggedIn,
+                     translationService, &application::ITranslationService::setupUserData);
 
     QObject::connect(authenticationService, &application::IAuthenticationService::loggedOut,
                      aiExplanationService, &application::IAiExplanationService::clearUserData);
+    QObject::connect(authenticationService, &application::IAuthenticationService::loggedOut,
+                     translationService, &application::ITranslationService::clearUserData);
     QObject::connect(authenticationService, &application::IAuthenticationService::loggedOut,
         freeBooksService, &application::IFreeBooksService::clearUserData);
 
