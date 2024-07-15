@@ -21,6 +21,7 @@ add_library(adapters
                     interfaces/persistance/i_app_info_access.hpp
                     interfaces/persistance/i_dictionary_access.hpp
                     interfaces/persistance/i_ai_explanation_access.hpp
+                    interfaces/persistance/i_translation_access.hpp
                     interfaces/persistance/i_folder_storage_access.hpp
                     
                     controllers/authentication_controller.cpp
@@ -64,6 +65,8 @@ add_library(adapters
                     gateways/dictionary_gateway.cpp
                     gateways/ai_explanation_gateway.cpp
                     gateways/ai_explanation_gateway.hpp
+                    gateways/translation_gateway.cpp
+                    gateways/translation_gateway.hpp
                     gateways/folder_storage_gateway.hpp
                     gateways/folder_storage_gateway.cpp
                     
@@ -107,6 +110,9 @@ add_library(adapters
                     DTOs/word_definition_dto.hpp
                     DTOs/folder_dto.hpp
                     interfaces/controllers/i_tools_controller.hpp
+                    controllers/translation_controller.cpp
+                    controllers/translation_controller.hpp
+                    interfaces/controllers/i_translation_controller.hpp
 )
 
 target_compile_definitions(adapters PRIVATE ADAPTERS_LIBRARY)
