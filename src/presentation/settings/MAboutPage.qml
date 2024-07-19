@@ -287,7 +287,7 @@ MFlickWrapper {
                             id: heartImage
                             source: Icons.heart
                             fillMode: Image.PreserveAspectFit
-                            sourceSize.width: 80
+                            sourceSize.width: 40
                         }
 
                         Label {
@@ -295,8 +295,9 @@ MFlickWrapper {
                             Layout.alignment: baseRoot.rightAlign ? Qt.AlignRight : Qt.AlignLeft
                             text: qsTr("Librum is here for everyone who just wants to enjoy a good book.\n" + "We hope you have a great time using it! Feel free to leave us a rating and some feedback.")
                             wrapMode: Text.WordWrap
+                            Layout.fillWidth: true 
                             color: Style.colorText
-                            font.pointSize: Fonts.size14
+                            font.pointSize: Fonts.size12
                             lineHeight: 1.10
                         }
                     }
