@@ -36,6 +36,12 @@ ApplicationWindow {
     visibility: Window.Maximized
     title: qsTr("Librum - Your ebook reader")
 
+    WindowStateSaver
+    {
+        window: baseRoot
+        windowName: "librumMainWindow"
+    }
+
     Shortcut {
         sequence: SettingsController.shortcuts.ReloadApplication
         onActivated: internal.reloadApplication()

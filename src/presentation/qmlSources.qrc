@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>WindowStateSaver.qml</file>
         <file>modules/CustomComponents/MTitle.qml</file>
         <file>modules/CustomComponents/MLogo.qml</file>
         <file>modules/CustomComponents/qmldir</file>
