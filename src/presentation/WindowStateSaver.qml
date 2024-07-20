@@ -64,7 +64,7 @@ Item
             s.visibility = window.visibility;
             break;
         case ApplicationWindow.Maximized:
-            s.visibility = window.visibility;
+            s.visibility = window.Maximized;
             break;
         }
     }

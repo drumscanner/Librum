@@ -27,13 +27,13 @@ ApplicationWindow {
     property bool rightAlign: AppInfoController.language === "العربية"
     property bool externalBookMode: false
 
-    // Only initalize once at the start
+    // Only initialize once at the start
     Component.onCompleted: externalBookMode = externalBook
 
     minimumHeight: 400
     minimumWidth: 650
     visible: true
-    visibility: Window.Maximized
+    //visibility: Window.Maximized
     title: qsTr("Librum - Your ebook reader")
 
     WindowStateSaver
