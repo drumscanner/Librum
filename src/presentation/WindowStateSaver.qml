@@ -23,11 +23,7 @@ Item
     {
         if (s.width && s.height)
         {
-            window.x = s.x;
-            window.y = s.y;
-            window.width = s.width;
-            window.height = s.height;
-            window.visibility = s.visibility;
+            restoreWindow(s)
         }
     }
 
@@ -67,5 +63,13 @@ Item
             s.visibility = window.Maximized;
             break;
         }
+    }
+
+    function restoreWindow(s) {
+        window.x = s.x;
+        window.y = s.y;
+        window.width = s.width;
+        window.height = s.height;
+        window.visibility = s.visibility;
     }
 }

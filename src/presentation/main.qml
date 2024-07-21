@@ -27,20 +27,22 @@ ApplicationWindow {
     property bool rightAlign: AppInfoController.language === "العربية"
     property bool externalBookMode: false
 
+    WindowStateSaver
+    {
+        window: baseRoot
+        windowName: "librumMainWindow"
+    }
+
     // Only initialize once at the start
-    Component.onCompleted: externalBookMode = externalBook
+    Component.onCompleted: {
+        externalBookMode = externalBook
+    }
 
     minimumHeight: 400
     minimumWidth: 650
     visible: true
     //visibility: Window.Maximized
     title: qsTr("Librum - Your ebook reader")
-
-    WindowStateSaver
-    {
-        window: baseRoot
-        windowName: "librumMainWindow"
-    }
 
     Shortcut {
         sequence: SettingsController.shortcuts.ReloadApplication

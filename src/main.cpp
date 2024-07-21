@@ -244,7 +244,7 @@ int main(int argc, char* argv[])
 
     // Startup
     QQmlApplicationEngine engine;
-    QQuickStyle::setStyle("Basic");
+    QQuickStyle::setStyle("Material");
     engine.addImportPath("qrc:/modules");
     engine.addImportPath(QCoreApplication::applicationDirPath() + "/src/presentation/qt_tree_view/qml/");
     appInfoController->setQmlApplicationEngine(&engine);

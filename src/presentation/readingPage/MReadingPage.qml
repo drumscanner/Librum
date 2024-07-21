@@ -343,12 +343,15 @@ Page {
         property int prevCurrentPage: -1
 
         // Just assign it once (no binding)
-        Component.onCompleted: prevCurrentPage = BookController.currentPage
+        Component.onCompleted: {
+            prevCurrentPage = BookController.currentPage
+        }
 
         function startFullScreenMode() {
             if (internal.fullScreen)
                 return
 
+            ApplicationWindow.visibility = Window.FullScreen
             internal.fullScreen = true
             hideToolbar.start()
         }
@@ -357,6 +360,7 @@ Page {
             if (!internal.fullScreen)
                 return
 
+            ApplicationWindow.visibility = Window.FullScreen
             internal.fullScreen = false
             showToolbar.start()
         }
