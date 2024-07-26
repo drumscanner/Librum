@@ -201,7 +201,7 @@ ApplicationWindow {
 
 
     /*
-      loadPage() manages the page switching through out the application
+      loadPage() manages the page switching throughout the application
       */
     function loadPage(page, sidebarItem, doSamePageCheck = true) {
         // Prevent switching to the same page that is currently active

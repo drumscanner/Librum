@@ -154,7 +154,7 @@ Page {
                         acceptedButtons: Qt.NoButton // Don't eat the mouse clicks
                         anchors.fill: parent
                         cursorShape: updateBannerText.hoveredLink
-                                     != "" ? Qt.PointingHandCursor : Qt.ArrowCursor
+                                     !== "" ? Qt.PointingHandCursor : Qt.ArrowCursor
                     }
                 }
 
@@ -252,7 +252,7 @@ Page {
                 Layout.fillHeight: true
                 Layout.minimumHeight: 100
                 Layout.topMargin: 30
-                visible: !internal.libraryIsEmpty && bookGrid.count != 0
+                visible: !internal.libraryIsEmpty && bookGrid.count !== 0
                 padding: 0
                 background: Rectangle {
                     color: "transparent"
@@ -279,8 +279,7 @@ Page {
                         onLeftButtonClicked: {
                             // If book selection mode is enabled we just want to select / deselect the clicked book
                             if (Globals.bookSelectionModeEnabled) {
-                                var index = Globals.selectedBooks.indexOf(
-                                            model.uuid)
+                                var index = Globals.selectedBooks.indexOf(model.uuid)
                                 if (index !== -1) {
                                     bookDelegate.deselect()
                                     Globals.selectedBooks.splice(index, 1)
@@ -292,8 +291,7 @@ Page {
                             }
 
                             if (model.downloaded) {
-                                Globals.selectedBook = LibraryController.getBook(
-                                            model.uuid)
+                                Globals.selectedBook = LibraryController.getBook(model.uuid)
                                 internal.openBook()
                             } // Don't start downloading if downloading is already in progress.
                             else if (!bookDelegate.downloading) {
@@ -304,8 +302,8 @@ Page {
 
 
                         /*
-                      When right-clicking a book, open the bookOptions popup.
-                      */
+                            When right-clicking a book, open the bookOptions popup.
+                        */
                         onRightButtonClicked: (index, mouse) => {
                                                   // Calculate where to spawn the bookOptions popup and set its position
                                                   let currentMousePosition = mapToItem(
@@ -333,22 +331,21 @@ Page {
 
 
                         /*
-                      When clicking more options, open the bookOptions popup
-                      */
+                            When clicking more options, open the bookOptions popup
+                        */
                         onMoreOptionClicked: (index, point) => {
-                                                 // Calculate where to spawn the bookOptions popup and set its position
-                                                 let currentMousePosition = mapToItem(
-                                                     bookGridContainer, point)
+                             // Calculate where to spawn the bookOptions popup and set its position
+                             let currentMousePosition = mapToItem(
+                                 bookGridContainer, point)
 
-                                                 bookOptionsPopup.x = currentMousePosition.x
-                                                 - bookOptionsPopup.implicitWidth / 2
-                                                 bookOptionsPopup.y = currentMousePosition.y
-                                                 - bookOptionsPopup.implicitHeight - 6
+                             bookOptionsPopup.x = currentMousePosition.x
+                                    - bookOptionsPopup.implicitWidth / 2
+                             bookOptionsPopup.y = currentMousePosition.y
+                                    - bookOptionsPopup.implicitHeight - 6
 
-                                                 // Open the bookOptions
-                                                 internal.openBookOptionsPopup(
-                                                     model)
-                                             }
+                             // Open the bookOptions
+                             internal.openBookOptionsPopup(model)
+                         }
                     }
 
 
@@ -485,9 +482,9 @@ Page {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.leftMargin: -sidebar.width
                 Layout.topMargin: Math.round(root.height / 3) - implicitHeight
-                visible: bookGrid.count == 0
-                         && LibraryController.bookCount !== 0
-                         && LibraryController.libraryModel.isFiltering
+                visible: bookGrid.count === 0
+                            && LibraryController.bookCount !== 0
+                            && LibraryController.libraryModel.isFiltering
 
                 onClearFilters: {
                     toolbar.resetFilters()

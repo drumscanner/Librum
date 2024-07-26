@@ -352,6 +352,7 @@ Page {
                 return
 
             ApplicationWindow.visibility = Window.FullScreen
+            ApplicationWindow.flags = Qt.FramelessWindowHint
             internal.fullScreen = true
             hideToolbar.start()
         }
@@ -362,6 +363,7 @@ Page {
 
             ApplicationWindow.visibility = Window.FullScreen
             internal.fullScreen = false
+            //ApplicationWindow.window.showNormal()
             showToolbar.start()
         }
 

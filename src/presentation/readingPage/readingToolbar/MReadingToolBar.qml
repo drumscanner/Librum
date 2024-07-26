@@ -164,7 +164,7 @@ Pane {
                         // but we present them as 1 to pageCount to the user.
                         onEditingFinished: {
                             let newPage = Number(inputField.text)
-                            if (root.currentPage == newPage - 1)
+                            if (root.currentPage === newPage - 1)
                                 return
 
                             if (newPage < 1 || newPage > root.pageCount) {
@@ -296,6 +296,19 @@ Pane {
                             0, zoomComboBox.text.length - 1) / 100
                 zoomAssignment.start() // Force rebinding
             }
+        }
+
+        MButton {
+            id: pageViewButton
+            Layout.preferredWidth: 40
+            Layout.preferredHeight: 32
+            backgroundColor: Style.colorReadingViewButtonBackground
+            borderWidth: 0
+            imagePath: active ? Icons.readingViewMaximizeSelected : Icons.readingViewMaximize
+            imageSize: 20
+            opacityOnPressed: 0.7
+
+            onClicked: root.fullScreenButtonClicked()
         }
 
         MButton {
